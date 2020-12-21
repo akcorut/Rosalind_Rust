@@ -1,5 +1,6 @@
 use std::env;
 use std::fs;
+use std::time::{Duration, Instant};
 
 fn main() {
     // --snip--
@@ -14,6 +15,7 @@ fn main() {
 
     let mut output_rna = String::new();
 
+    let start = Instant::now();
     for nuc in input_dna.chars() {
         match nuc {
             'T' => output_rna.push('U'),
@@ -21,6 +23,7 @@ fn main() {
             _ => output_rna.push(nuc),
         }
     }
-
-    println!("RNA: {}", output_rna)
+    println!("RNA: {}", output_rna);
+    let duration = start.elapsed();
+    println!("Time elapsed is: {:?}", duration);
 }
